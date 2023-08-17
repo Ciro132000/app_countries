@@ -3,7 +3,7 @@
         <SideBar/>
 
         <v-main>
-            <router-view/>            
+            <router-view class="router-view" />            
         </v-main>
     </div>
 </template>
@@ -22,5 +22,7 @@ export default {
 
 
 <style>
-
+.router-view{
+    background: var(--v-primary-base);
+}
 </style>

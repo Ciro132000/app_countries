@@ -1,4 +1,6 @@
 export default () => ({
     countries: [],
-    countriesFilter: []
+    countriesFilter: [],
+    isShowDetails:false,
+    detailsCountry:null
 })

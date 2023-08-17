@@ -1,8 +1,7 @@
 <template>
     <v-card
       class="mx-auto card-country"
-      max-width="344"
-      @click="moreDetails"
+      @click="moreDetails(data)"
     >
       <v-img
         :src=data.img
@@ -13,62 +12,43 @@
       <v-card-title>
         <v-row>
             <v-col cols="2">
-                {{ data.emoji }}
+                <img :src="getFlagEmoji(data.code)" alt="Flag">
             </v-col>
             <v-col cols="10">
-                <h2>{{ data.name }}</h2>
-                <span>{{ data.continent.name }}</span>
+                <h2 class="name-country">{{ data.name }}</h2>
+                <span class="continent">{{ data.continent.name }}</span>
             </v-col>
         </v-row>
       </v-card-title>
-  
-  
-      <!-- <v-expand-transition>
-        <div v-show="show">
-        </div>
-      </v-expand-transition> -->
-
-
-    <v-dialog v-model="details" max-width="600">
-        <Details :dataContry="data" />
-    </v-dialog>
-
-
 
     </v-card>
 </template>
 
 <script>
 
-import Details from './details'
-import axios from 'axios'
+import { mapMutations, mapGetters, mapState, mapActions } from 'vuex'
+import emojiFlag from 'emoji-flag';
 
 export default {
     props: ['data'],
     name: "Cards",
-    components:{
-        Details
-    },
     data(){
         return{
             img:'',
-            details:false,
         }
-    },
-    mounted(){
-        
-    },
-    updated(){
-        
     },
     methods:{
 
-        moreDetails(){
-            this.details = true;
+        ...mapActions("countries",{moreDetails: "getDetailsCountry"}),
+
+        convertUnicodeToEmoji(unicodeString) {
+            const codePoints = unicodeString.split(' ').map(code => String.fromCodePoint(parseInt(code.substring(2), 16)));
+            return codePoints.join('');
         },
-        closeDetails(){
-            this.details = false;
-        }
+
+        getFlagEmoji(countryCode) {
+            return emojiFlag(countryCode);
+        },
 
     }
 }
@@ -79,11 +59,29 @@ export default {
 .card-country{
     cursor: pointer;
     transition: 1s;
+    border-radius: 25px !important;
+    height: 100%;
 }
 
 .card-country:hover{
     transform: scale(1.05);
-    background-color: rgb(196, 238, 255);
+    background-color: var(--v-info-base);
+    color: var(--v-white-base);
 }
+
+.card-country:hover .name-country{
+    color: var(--v-white-base) !important;
+}
+
+.continent{
+    
+}
+
+.name-country{
+    transition: 1s;
+    font-weight: bold;
+    color: var(--v-info-base);
+}
+
 
 </style>

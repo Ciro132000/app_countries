@@ -10,3 +10,14 @@ export const SET_COUNTRIES_FILTER = (state, countries) => {
 export const REMOVE_FILTER = (state) => {
     state.countriesFilter = []
 }
+
+export const SET_DETAILS_COUNTRY = (state, details) => {
+    state.detailsCountry = details
+    state.isShowDetails = true
+}
+
+
+export const HIDE_DETAILS = (state) => {
+    state.detailsCountry = null
+    state.isShowDetails = false
+}

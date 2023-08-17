@@ -14,6 +14,7 @@ export const actionGetCountries = async ({commit}) => {
                     code
                     name
                     emoji
+                    emojiU
                     continent{
                     name
                     }
@@ -78,6 +79,48 @@ export const searchContry = async ({commit}, countries) => {
 // Eliminar el filtro y busqueda
 export const removeFilter = async ({commit}) => {
     commit('REMOVE_FILTER')
+}
+
+// Eliminar detalles
+export const removeDetails = async ({commit}) => {
+    commit('HIDE_DETAILS')
+}
+
+// Mostrar detalles del país
+export const getDetailsCountry = async ({commit}, data) => {
+    try {
+        const apolloClient = createProvider().defaultClient;
+        const response = await apolloClient.query({
+            query: gql`
+            query{
+                country(code: "${data.code}"){
+                    capital
+                    native
+                    phone
+                    currency
+                    subdivisions{
+                    name
+                    }
+                    awsRegion
+                    languages{
+                    name
+                    native
+                    }
+                    states{
+                    name
+                    }
+                    
+                }
+            }
+            `
+          });
+
+          const details = {...data, ...response.data.country}
+
+          commit('SET_DETAILS_COUNTRY', details);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 
