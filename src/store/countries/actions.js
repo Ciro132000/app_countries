@@ -127,7 +127,7 @@ export const getDetailsCountry = async ({commit}, data) => {
 // Buscar imagenes de los paises
 const loadingImage = async (name) => {
     try {
-        const res = await axios.get( `?key=${process.env.VERCEL_PIXABAY_API_KEY}&image_type=photo&q=${name}`);
+        const res = await axios.get( `?key=${process.env.VUE_APP_PIXABAY_API_KEY}&image_type=photo&q=${name}`);
         
 
         if(res.data.total == 0){
