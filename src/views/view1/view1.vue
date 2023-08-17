@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Vista 1</h1>
+    <div class="view1">
+        <h1> Bienvenid@ a la vista 1</h1>
     </div>
 </template>
 
@@ -14,5 +14,7 @@ export default {
 
 
 <style>
-
+.view1{
+    height: 100vh;
+}
 </style>

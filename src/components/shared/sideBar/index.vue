@@ -1,6 +1,11 @@
 <template>
     <div >
         <v-navigation-drawer v-model="drawer" color="secondary" app>
+          <v-img
+            src="../../../assets/logo.png"
+            
+          ></v-img>
+  
             <v-list>
                 <v-list-item v-for="(link, index) in items" :key="index" :to="{name: link.path}" >
                     <v-list-item-icon class="mr-3">
@@ -14,7 +19,7 @@
         <v-app-bar app :clipped-left="clipped" class="app-bar">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Aplicación de Paises</v-toolbar-title>
-        <Search/> 
+ 
         </v-app-bar>
     </div>
 
@@ -22,12 +27,11 @@
 
 <script>
 
-import Search from '../search'
 
 export default {
     name: "SideBar",
     components:{
-        Search 
+
     },
     data() {
     return {
@@ -41,12 +45,12 @@ export default {
         },
         {
           name: 'Vista 1',
-          icon: 'home',
+          icon: 'done',
           path: 'View1'
         },
         {
           name: 'Vista 2',
-          icon: 'home',
+          icon: 'done',
           path: 'View2'
         },
       ],
@@ -66,7 +70,5 @@ export default {
   transition: margin-left 0.3s ease-in-out;
 }
 
-.app-bar{
-  background-color: red
-}
+
 </style>

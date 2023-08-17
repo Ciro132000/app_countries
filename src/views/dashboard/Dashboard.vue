@@ -23,6 +23,7 @@ export default {
 
 <style>
 .router-view{
-    background: var(--v-primary-base);
+    background: var(--v-info-base);
+    height: 100%;
 }
 </style>

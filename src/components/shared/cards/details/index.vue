@@ -15,11 +15,12 @@
         <v-card-title>
             <v-row>
                 <v-col cols="3">
-                    Bandera
+                    {{ data.emoji }}
                 </v-col>
 
                 <v-col cols="9">
-                    <h4>{{data.name}}</h4>
+                    <h4 class="title-country">{{data.name}}</h4>
+                    <span>{{ data.continent.name }}</span>
                 </v-col>
             </v-row>
         </v-card-title>
@@ -29,7 +30,7 @@
                 <v-list-item class="pa-0">
                     <v-list-item-content>
                     <v-list-item-title>
-                        <span>Capital: </span> {{ data.capital }}
+                        <span class="title-item-details">Capital: </span> {{ data.capital ? data.capital: "There is no capital" }}
                     </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
@@ -38,10 +39,16 @@
                 <v-list-item class="pa-0">
                     <v-list-item-content>
                     <v-list-item-title>
-                        <span>Language: </span>
-                        <span v-for="(languaje, i) in data.languages" :key="i">
-                            {{ languaje.name }},
-                        </span>
+                        <span class="title-item-details">Language: </span>
+
+                        <span v-if="data.languages.length == 0" >There are no languages</span>
+        
+                            <span v-for="(languaje, i) in data.languages" :key="i">
+                                {{ languaje.name }},
+                            </span>
+                        
+
+                        
                     </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
@@ -50,7 +57,7 @@
                 <v-list-item class="pa-0">
                     <v-list-item-content>
                     <v-list-item-title>
-                        <span>Phone code: </span> +{{data.phone }}
+                        <span class="title-item-details">Phone code: </span> +{{data.phone }}
                     </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
@@ -59,7 +66,7 @@
                 <v-list-item class="pa-0">
                     <v-list-item-content>
                     <v-list-item-title>
-                        <span>Currency: </span> {{ data.currency }}
+                        <span class="title-item-details">Currency: </span> {{ data.currency ? data.currency: "There is no currency" }}
                     </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
@@ -68,9 +75,13 @@
                 <v-list-item class="pa-0">
                     <v-list-item-content>
                     <v-list-item-title>
-                        <span>Region </span>
+                        <span class="title-item-details">Region </span>
                         <div class="scroll-region">
-                            <v-list>
+                            <div v-if="data.subdivisions.length == 0">
+                                <h3>No regional data presented</h3>
+                            </div>
+
+                            <v-list v-else>
                                 <v-list-item class="pa-0" v-for="(subdivisions, index) in data.subdivisions" :key="index">
                                     <v-list-item-content>
                                     <v-list-item-title>
@@ -115,6 +126,11 @@ export default {
 
 
 <style scoped>
+
+*{
+    color: var(--v-fonts-base);
+    font-size: 1rem;
+}
 .card-details{
     max-height: calc(100vh - 20px); 
     overflow-y: auto; 
@@ -145,4 +161,39 @@ export default {
 
   box-shadow: 0px 5px -50px rgba(0, 0, 0, 0.959);
 }
+
+.title-country{
+    color: var(--v-primary-base);
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.title-item-details{
+    color: var(--v-primary-base);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 902px) {
+    .card-details{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 50%;
+        height: 70vh;
+        margin:auto
+    }
+
+}
+
+@media (max-width: 450px) {
+    .card-details{
+        width: 90%;
+    }
+
+}
+
+
+
+
 </style>
