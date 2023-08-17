@@ -1,59 +1,89 @@
 <template>
     <v-card
-      class="mx-auto"
+      class="mx-auto card-country"
       max-width="344"
+      @click="moreDetails"
     >
       <v-img
-        src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+        :src=data.img
         height="200px"
         cover
       ></v-img>
   
       <v-card-title>
-        Top western road trips
+        <v-row>
+            <v-col cols="2">
+                {{ data.emoji }}
+            </v-col>
+            <v-col cols="10">
+                <h2>{{ data.name }}</h2>
+                <span>{{ data.continent.name }}</span>
+            </v-col>
+        </v-row>
       </v-card-title>
   
-      <v-card-subtitle>
-        1,000 miles of wonder
-      </v-card-subtitle>
   
-      <v-card-actions>
-        <v-btn
-          color="orange-lighten-2"
-          variant="text"
-        >
-          Explore
-        </v-btn>
-  
-        <v-spacer></v-spacer>
-  
-        <v-btn
-          :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-          @click="show = !show"
-        ></v-btn>
-      </v-card-actions>
-  
-      <v-expand-transition>
+      <!-- <v-expand-transition>
         <div v-show="show">
-          <v-divider></v-divider>
-  
-          <v-card-text>
-            I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-          </v-card-text>
         </div>
-      </v-expand-transition>
+      </v-expand-transition> -->
+
+
+    <v-dialog v-model="details" max-width="600">
+        <Details :dataContry="data" />
+    </v-dialog>
+
+
+
     </v-card>
-  </template>
+</template>
 
 <script>
 
+import Details from './details'
+import axios from 'axios'
 
 export default {
+    props: ['data'],
     name: "Cards",
+    components:{
+        Details
+    },
+    data(){
+        return{
+            img:'',
+            details:false,
+        }
+    },
+    mounted(){
+        
+    },
+    updated(){
+        
+    },
+    methods:{
+
+        moreDetails(){
+            this.details = true;
+        },
+        closeDetails(){
+            this.details = false;
+        }
+
+    }
 }
 </script>
 
 
-<style>
+<style scoped>
+.card-country{
+    cursor: pointer;
+    transition: 1s;
+}
+
+.card-country:hover{
+    transform: scale(1.05);
+    background-color: rgb(196, 238, 255);
+}
 
 </style>

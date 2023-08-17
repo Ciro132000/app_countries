@@ -25,6 +25,7 @@
         <v-app-bar app :clipped-left="clipped">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Aplicación de Paises</v-toolbar-title>
+        <Search/> 
         </v-app-bar>
     </div>
 
@@ -32,8 +33,13 @@
 
 <script>
 
+import Search from '../search'
+
 export default {
     name: "SideBar",
+    components:{
+        Search 
+    },
     data() {
     return {
       drawer: false,
