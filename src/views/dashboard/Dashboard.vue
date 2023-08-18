@@ -10,6 +10,7 @@
 
 <script>
 
+import { mapActions } from 'vuex'
 import SideBar from "@/components/shared/sideBar"
 
 export default {
@@ -17,6 +18,12 @@ export default {
     components: {
         SideBar
     },
+    mounted(){
+        this.getCountries();
+    },
+    methods:{
+        ...mapActions("countries",{getCountries: "actionGetCountries"}),
+    }
 }
 </script>
 

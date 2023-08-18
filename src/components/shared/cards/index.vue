@@ -12,7 +12,9 @@
       <v-card-title>
         <v-row>
             <v-col cols="2">
-                {{ data.emoji }}
+                <div class="flag">
+                    {{ data.emoji }}
+                </div>
             </v-col>
             <v-col cols="10">
                 <h2 class="name-country">{{ data.name }}</h2>
@@ -41,14 +43,14 @@ export default {
 
         ...mapActions("countries",{moreDetails: "getDetailsCountry"}),
 
-        convertUnicodeToEmoji(unicodeString) {
-            const codePoints = unicodeString.split(' ').map(code => String.fromCodePoint(parseInt(code.substring(2), 16)));
-            return codePoints.join('');
-        },
+        // convertUnicodeToEmoji(unicodeString) {
+        //     const codePoints = unicodeString.split(' ').map(code => String.fromCodePoint(parseInt(code.substring(2), 16)));
+        //     return codePoints.join('');
+        // },
 
-        getFlagEmoji(countryCode) {
-            return emojiFlag(countryCode);
-        },
+        // getFlagEmoji(countryCode) {
+        //     return emojiFlag(countryCode);
+        // },
 
     }
 }
@@ -79,6 +81,10 @@ export default {
     transition: 1s;
     font-weight: bold;
     color: var(--v-primary-base);
+    font-size: 2rem;
+}
+
+.flag{
     font-size: 2rem;
 }
 

@@ -21,3 +21,13 @@ export const HIDE_DETAILS = (state) => {
     state.detailsCountry = null
     state.isShowDetails = false
 }
+
+
+
+// Nuevo
+export const ALL_COUNTRIES_CODE = (state, countries) => {
+    const skip = state.pagination.skip
+    const pagination = countries.length/skip
+    state.pagination.total = pagination
+    state.totalCountries = countries
+}

@@ -7,14 +7,16 @@
         >
         </v-img>
 
-        <v-btn color="transparent" class="btn-close" @click="closeDetails" icon>
-            <v-icon  style="color: #ffffff">mdi-close</v-icon>
-        </v-btn>
+        <div class="header-card">
+            <v-btn color="transparent" class="btn-close" @click="closeDetails" icon>
+                <v-icon  style="color: #ffffff">mdi-close</v-icon>
+            </v-btn>
+        </div>
         
 
         <v-card-title>
             <v-row>
-                <v-col cols="3">
+                <v-col cols="3" class="flag">
                     {{ data.emoji }}
                 </v-col>
 
@@ -135,6 +137,7 @@ export default {
     max-height: calc(100vh - 20px); 
     overflow-y: auto; 
     position: relative;
+    z-index: 10 !important;
 }
 
 .btn-close{
@@ -174,26 +177,49 @@ export default {
     font-size: 1.2rem;
 }
 
-@media (max-width: 902px) {
+
+@media (max-width: 1264px) {
     .card-details{
         position: fixed;
         right: 0;
         bottom: 0;
         width: 50%;
-        height: 70vh;
-        margin:auto
+        height: 90%;
+        margin:auto;
     }
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 902px) {
     .card-details{
-        width: 90%;
+        width: 60%;
+        height: 90%;
     }
 
 }
 
+@media (max-width: 500px) {
+    .card-details{
+        width: 100%;
+        height: 70%;
+    }
 
+}
+
+.header-card{
+    height: 4rem !important;
+    width: 100% !important;
+
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.74), rgba(128, 128, 128, 0.596), transparent);
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.flag{
+    font-size: 3rem;
+}
 
 
 </style>

@@ -5,6 +5,7 @@ import { createProvider } from '../../vue-apollo';
 
 // Obtener todos los paises de la API
 export const actionGetCountries = async ({commit}) => {
+ 
     try {
         const apolloClient = createProvider().defaultClient;
         const response = await apolloClient.query({
@@ -35,6 +36,7 @@ export const actionGetCountries = async ({commit}) => {
         console.error(error);
     }
 }
+
 
 // Filtrar los paises por continentes usando la API
 export const actionGetCountriesContinent = async ({commit}, code) => {
@@ -73,8 +75,6 @@ export const actionGetCountriesContinent = async ({commit}, code) => {
 export const searchContry = async ({commit}, countries) => {
     commit('SET_COUNTRIES_FILTER', countries)
 }
-
-
 
 // Eliminar el filtro y busqueda
 export const removeFilter = async ({commit}) => {

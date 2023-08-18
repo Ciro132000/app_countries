@@ -1,7 +1,7 @@
 <template>
     <v-container class="container-search">
       
-          <v-row >
+          <v-row class="row-search" >
             <v-col cols="6" class="input-search">
                 <label>País</label>
                 <v-text-field
@@ -9,6 +9,7 @@
                     @focus="focusInput"
                     @input="searchCountryInput"
                     @blur="hiddenMenu"
+                    class="input-text"
                 ></v-text-field>
             </v-col>
                 
@@ -61,7 +62,7 @@ export default {
             showMenu: false,
             imgContinents:{
                 AF:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/BlankMap-Africa.svg/600px-BlankMap-Africa.svg.png",
-                AN:"https://media.istockphoto.com/id/1024511118/es/vector/mapa-de-alta-calidad.jpg?s=612x612&w=0&k=20&c=RbigPAfuyV6ms2v5r_X9mXXP3hbU3FZRrMd42dBmMhA=",
+                AN:"https://images.vexels.com/media/users/3/274895/isolated/preview/f854bfbb8bf891a67ad38d468ad36372-anta-rtida-mapa-plano-continente.png",
                 AS:"https://static.vecteezy.com/system/resources/previews/019/633/230/non_2x/doodle-freehand-drawing-of-asia-countries-map-free-png.png",
                 EU:"https://svgsilh.com/svg/151641.svg",
                 NA:"https://svgsilh.com/svg/151641.svg",
@@ -83,7 +84,10 @@ export default {
         ...mapState("countries", { countriesState:"countries"}),
     },
     updated(){
-        this.searchCountryInput();
+        
+    },
+    destroyed(){
+        this.removeFilter()
     },
     methods: {
 
@@ -107,6 +111,7 @@ export default {
         searchCountryInput(){
 
             if (this.search === '') {
+                this.showMenu = true
                 this.removeFilter()
             }else{
                 this.showMenu = false
@@ -158,23 +163,33 @@ export default {
   font-size: 10px;
 }
 
+.row-search{
+    height: 100%;
+}
+
 .btn-search{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
 }
 
 .search-button {
   border-radius: 2rem;
   background-color: var(--v-primary-base) !important; 
   color: white !important;
-  font-size: 2rem !important;
+  font-size: 1.7rem !important;
   padding: 1rem 1.4rem !important;
+}
+
+.search-button .v-icon{
+    font-size: 1.7rem !important;
+    font-weight: bold;
 }
 
 .container-search{
     position: relative;
-    width: 60%;
+    width: 50%;
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -187,6 +202,10 @@ export default {
 
 .input-search{
     width: 50%;
+}
+
+.input-text{
+    margin: -1.5rem 0rem;
 }
 
 .v-label-active{
@@ -232,6 +251,7 @@ label{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    transition: 1s;
 }
 
 .filter-continent:hover{
@@ -258,7 +278,11 @@ label{
 .img-continent{
     background: var(--v-white-base);
     border-radius: 2rem;
+    
 }
 
+.filter-continent:hover .img-continent{
+    background: var(--v-primary-base);
+}
 
 </style>

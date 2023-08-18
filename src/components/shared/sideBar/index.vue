@@ -3,7 +3,7 @@
         <v-navigation-drawer v-model="drawer" color="secondary" app>
           <v-img
             src="../../../assets/logo.png"
-            
+            class="img-logo"
           ></v-img>
   
             <v-list>
@@ -11,7 +11,7 @@
                     <v-list-item-icon class="mr-3">
                         <v-icon style="color: #ffffff">{{ `mdi-${link.icon}` }}</v-icon>
                     </v-list-item-icon>
-                    <v-list-item-title>{{ link.name }}</v-list-item-title>
+                    <v-list-item-title style="color: #ffffff">{{ link.name }}</v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
@@ -45,12 +45,12 @@ export default {
         },
         {
           name: 'Vista 1',
-          icon: 'done',
+          icon: 'account',
           path: 'View1'
         },
         {
           name: 'Vista 2',
-          icon: 'done',
+          icon: 'account',
           path: 'View2'
         },
       ],
@@ -68,6 +68,27 @@ export default {
 .v-navigation-drawer--open + .v-app-bar {
   margin-left: 250px;
   transition: margin-left 0.3s ease-in-out;
+}
+
+.v-list-item--active{
+  background: var(--v-accent-base) !important;
+  border-radius: 5rem;
+  
+}
+
+.v-list-item--active .v-list-item__title, .v-list-item--active .v-icon{
+  color: var(--v-fonts-base) !important;
+  font-weight: bold;
+}
+
+.v-list-item--link{
+  color: transparent !important;
+}
+
+.img-logo{
+  width: 80%;
+  display: block;
+  margin: auto;
 }
 
 

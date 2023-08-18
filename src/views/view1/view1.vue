@@ -15,6 +15,9 @@ export default {
 
 <style>
 .view1{
-    height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

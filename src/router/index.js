@@ -10,11 +10,12 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'main',
+    redirect:'/home',
     component: Dashboard,
     children:[
       {
-        path: '/',
+        path: '/home',
         component: Home,
         name: 'home'
       },
