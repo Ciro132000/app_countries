@@ -38,7 +38,6 @@
 
 <script>
 
-import gql from 'graphql-tag'
 import Cards from '../shared/cards'
 import Details from '../shared/cards/details'
 import { mapMutations, mapGetters, mapState, mapActions } from 'vuex'
@@ -48,11 +47,6 @@ import Loadign from '../shared/loading'
 
 export default {
     name: "HomePage",
-    data(){
-        return{
-            
-        }
-    },
     components:{
         Cards,
         Details,
@@ -60,14 +54,10 @@ export default {
         Loadign
     },
     computed:{
-        // ...mapGetters("countries", ["countries"])
         ...mapState("countries", { countriesState:"countries", countriesFilter: "countriesFilter", isShowDetails: "isShowDetails"}),
         dataCountries(){
             return this.countriesFilter.length > 0 || this.countriesFilter.message ? this.countriesFilter:this.countriesState 
         }
-    },
-    mounted(){
-        
     },
     methods: {
         ...mapMutations("countries", ["SET_COUNTRIES"]),

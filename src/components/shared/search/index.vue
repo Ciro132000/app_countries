@@ -83,9 +83,6 @@ export default {
     computed: {
         ...mapState("countries", { countriesState:"countries"}),
     },
-    updated(){
-        
-    },
     destroyed(){
         this.removeFilter()
     },

@@ -4,19 +4,15 @@ import * as actions from './actions'
 import * as getters from './getters'
 
 const Countries = {
-    //TODO :  falta algo
-
-    // información que nos interesa mantener
+    
     namespaced: true,
 
     state,
-        // PErmite obtener un estado en especifico 
+        
     getters,
-        // getLastMessages
-
-        // modifican el state
-    mutations,// recibo
-        // acciones que llaman a mutations para modificar el state
+        
+    mutations,
+        
     actions        
         
     

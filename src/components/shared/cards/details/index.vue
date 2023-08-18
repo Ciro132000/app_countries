@@ -106,17 +106,11 @@
 
 <script>
 
-import { mapMutations, mapGetters, mapState, mapActions } from 'vuex'
-import gql from 'graphql-tag'
+import { mapState, mapActions } from 'vuex'
 
 
 export default {
     name: "Details",
-    data(){
-        return{
-            
-        }
-    },
     computed: {
         ...mapState("countries", { data:"detailsCountry"}),
     },

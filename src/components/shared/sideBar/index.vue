@@ -30,9 +30,6 @@
 
 export default {
     name: "SideBar",
-    components:{
-
-    },
     data() {
     return {
       drawer: false,

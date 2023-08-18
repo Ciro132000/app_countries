@@ -29,29 +29,12 @@
 <script>
 
 import { mapActions } from 'vuex'
-import emojiFlag from 'emoji-flag';
 
 export default {
     props: ['data'],
     name: "Cards",
-    data(){
-        return{
-            img:'',
-        }
-    },
     methods:{
-
         ...mapActions("countries",{moreDetails: "getDetailsCountry"}),
-
-        // convertUnicodeToEmoji(unicodeString) {
-        //     const codePoints = unicodeString.split(' ').map(code => String.fromCodePoint(parseInt(code.substring(2), 16)));
-        //     return codePoints.join('');
-        // },
-
-        // getFlagEmoji(countryCode) {
-        //     return emojiFlag(countryCode);
-        // },
-
     }
 }
 </script>
