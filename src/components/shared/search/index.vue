@@ -3,7 +3,7 @@
       
           <v-row class="row-search" >
             <v-col cols="6" class="input-search">
-                <label>País</label>
+                <label>Pais</label>
                 <v-text-field
                     v-model="search"
                     @focus="focusInput"

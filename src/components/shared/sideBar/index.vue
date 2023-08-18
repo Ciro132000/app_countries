@@ -18,7 +18,7 @@
 
         <v-app-bar app :clipped-left="clipped" class="app-bar">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title>Aplicación de Paises</v-toolbar-title>
+        <v-toolbar-title>Country Application</v-toolbar-title>
  
         </v-app-bar>
     </div>
@@ -41,12 +41,12 @@ export default {
           path: 'home'
         },
         {
-          name: 'Vista 1',
+          name: 'View 1',
           icon: 'account',
           path: 'View1'
         },
         {
-          name: 'Vista 2',
+          name: 'Wiew 2',
           icon: 'account',
           path: 'View2'
         },
