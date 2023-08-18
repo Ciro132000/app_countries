@@ -6,6 +6,7 @@
                 <label>Pais</label>
                 <v-text-field
                     v-model="search"
+                    placeholder="Enter the country you are looking for"
                     @focus="focusInput"
                     @input="searchCountryInput"
                     @blur="hiddenMenu"
